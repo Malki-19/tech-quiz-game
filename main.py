@@ -1,75 +1,100 @@
+while True:
+    print("\nWelcome to Tech Quiz Game!")
 
-print("welcome to Tech Quiz Game!")
-name = input("Enter your name: ")
-print(f"Hello, {name}! Let's start the quiz.")
-score = 0
-print("\nQuestion 1")
-print("What does CPU stand for?")
-print("A. central processing unit")
-print("B. computer personal unit")
-print("C. central program utility")
-print("D. control processing user")
-answer = input("Your answer : ")
-if answer.upper() == "A":
-    print("Correct!")
-    score += 1
-else:
-    print("wrong!")
+    name = input("Enter your name: ")
+
+    print(f"Hello, {name}! Let's start the quiz.")
+
+    score = 0
+
+    # Question 1
+    print("\nQuestion 1")
+    print("What does CPU stand for?")
+    print("A. Central Processing Unit")
+    print("B. Computer Personal Unit")
+    print("C. Central Program Utility")
+    print("D. Control Processing User")
+
+    answer = input("Your answer: ")
+
+    if answer.upper() == "A":
+        print("Correct!")
+        score += 1
+    else:
+        print("Wrong!")
+
+    # Question 2
     print("\nQuestion 2")
-print("Which language is mainly used for web page structure?")
-print("A. Python")
-print("B. HTML")
-print("C. Java")
-print("D. C++")
-answer = input("Your answer: ")
+    print("Which language is mainly used for web page structure?")
+    print("A. Python")
+    print("B. HTML")
+    print("C. Java")
+    print("D. C++")
 
-if answer.upper() == "B":
-    print("Correct!")
-    score += 1
-else:
-    print("Wrong!")
+    answer = input("Your answer: ")
+
+    if answer.upper() == "B":
+        print("Correct!")
+        score += 1
+    else:
+        print("Wrong!")
+
     # Question 3
-print("\nQuestion 3")
-print("What does RAM stand for?")
-print("A. Random Access Memory")
-print("B. Read Access Machine")
-print("C. Run Active Memory")
-print("D. Random Application Module")
-answer = input("Your answer: ")
+    print("\nQuestion 3")
+    print("What does RAM stand for?")
+    print("A. Random Access Memory")
+    print("B. Read Access Machine")
+    print("C. Run Active Memory")
+    print("D. Random Application Module")
 
-if answer.upper() == "A":
-    print("Correct!")
-    score += 1
-else:
-    print("Wrong!")
+    answer = input("Your answer: ")
+
+    if answer.upper() == "A":
+        print("Correct!")
+        score += 1
+    else:
+        print("Wrong!")
+
     # Question 4
-print("\nQuestion 4")
-print("Which one is a programming language?")
-print("A. Google")
-print("B. Windows")
-print("C. Python")
-print("D. Chrome")
-answer = input("Your answer: ")
+    print("\nQuestion 4")
+    print("Which one is a programming language?")
+    print("A. Google")
+    print("B. Windows")
+    print("C. Python")
+    print("D. Chrome")
 
-if answer.upper() == "C":
-    print("Correct!")
-    score += 1
-else:
-    print("Wrong!")
+    answer = input("Your answer: ")
+
+    if answer.upper() == "C":
+        print("Correct!")
+        score += 1
+    else:
+        print("Wrong!")
+
     # Question 5
-print("\nQuestion 5")
-print("What does URL stand for?")
-print("A. Uniform Resource Locator")
-print("B. Universal Read Link")
-print("C. User Resource Location")
-print("D. Uniform Random Link")
-answer = input("Your answer: ")
+    print("\nQuestion 5")
+    print("What does URL stand for?")
+    print("A. Uniform Resource Locator")
+    print("B. Universal Read Link")
+    print("C. User Resource Location")
+    print("D. Uniform Random Link")
 
-if answer.upper() == "A":
-    print("Correct!")
-    score += 1
-else:
-    print("Wrong!")
+    answer = input("Your answer: ")
+
+    if answer.upper() == "A":
+        print("Correct!")
+        score += 1
+    else:
+        print("Wrong!")
+
     print("\nQuiz Completed!")
-print(f"Your score: {score}/5")
-print("\nYour score:", score)
+    print(f"Your score: {score}/5")
+
+    play_again = input("\nDo you want to play again? (yes/no): ")
+
+    if play_again.lower() == "yes":
+        print("Starting the quiz again...")
+        continue
+    else:
+        print("Thanks for playing!")
+        break
