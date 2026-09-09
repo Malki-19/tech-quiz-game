@@ -1,14 +1,16 @@
-def show_question1():
-    print("\nQuestion 1")
-    print("What does CPU stand for?")
-    print("A. Central Processing Unit")
-    print("B. Computer Personal Unit")
-    print("C. Central Program Utility")
-    print("D. Control Processing User")
+import random
+
+
+def show_question(question, option_a, option_b, option_c, option_d, correct_answer):
+    print("\n" + question)
+    print("A. " + option_a)
+    print("B. " + option_b)
+    print("C. " + option_c)
+    print("D. " + option_d)
 
     answer = input("Your answer: ")
 
-    if answer.upper() == "A":
+    if answer.upper() == correct_answer:
         print("Correct!")
         return 1
     else:
@@ -16,76 +18,58 @@ def show_question1():
         return 0
 
 
-def show_question2():
-    print("\nQuestion 2")
-    print("Which language is mainly used for web page structure?")
-    print("A. Python")
-    print("B. HTML")
-    print("C. Java")
-    print("D. C++")
-
-    answer = input("Your answer: ")
-
-    if answer.upper() == "B":
-        print("Correct!")
-        return 1
-    else:
-        print("Wrong!")
-        return 0
-
-
-def show_question3():
-    print("\nQuestion 3")
-    print("What does RAM stand for?")
-    print("A. Random Access Memory")
-    print("B. Read Access Machine")
-    print("C. Run Active Memory")
-    print("D. Random Application Module")
-
-    answer = input("Your answer: ")
-
-    if answer.upper() == "A":
-        print("Correct!")
-        return 1
-    else:
-        print("Wrong!")
-        return 0
-
-
-def show_question4():
-    print("\nQuestion 4")
-    print("Which one is a programming language?")
-    print("A. Google")
-    print("B. Windows")
-    print("C. Python")
-    print("D. Chrome")
-
-    answer = input("Your answer: ")
-
-    if answer.upper() == "C":
-        print("Correct!")
-        return 1
-    else:
-        print("Wrong!")
-        return 0
-
-
-def show_question5():
-    print("\nQuestion 5")
-    print("What does URL stand for?")
-    print("A. Uniform Resource Locator")
-    print("B. Universal Read Link")
-    print("C. User Resource Location")
-    print("D. Uniform Random Link")
-
-    answer = input("Your answer: ")
-
-    if answer.upper() == "A":
-        print("Correct!")
-        return 1
-    else:
-        print("Wrong!")
-        return 0
+questions = [
+    {
+        "question": "What does CPU stand for?",
+        "options": [
+            "Central Processing Unit",
+            "Computer Personal Unit",
+            "Central Program Utility",
+            "Control Processing User"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "Which language is mainly used for web page structure?",
+        "options": [
+            "Python",
+            "HTML",
+            "Java",
+            "C++"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "What does RAM stand for?",
+        "options": [
+            "Random Access Memory",
+            "Read Access Machine",
+            "Run Active Memory",
+            "Random Application Module"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "Which one is a programming language?",
+        "options": [
+            "Google",
+            "Windows",
+            "Python",
+            "Chrome"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "What does URL stand for?",
+        "options": [
+            "Uniform Resource Locator",
+            "Universal Read Link",
+            "User Resource Location",
+            "Uniform Random Link"
+        ],
+        "answer": "A"
+    }
+]
 
 
 while True:
@@ -97,14 +81,20 @@ while True:
 
     score = 0
 
-    score += show_question1()
-    score += show_question2()
-    score += show_question3()
-    score += show_question4()
-    score += show_question5()
+    random.shuffle(questions)
+
+    for question_data in questions:
+        score += show_question(
+            question_data["question"],
+            question_data["options"][0],
+            question_data["options"][1],
+            question_data["options"][2],
+            question_data["options"][3],
+            question_data["answer"]
+        )
 
     print("\nQuiz Completed!")
-    print(f"Your score: {score}/5")
+    print(f"Your score: {score}/{len(questions)}")
 
     play_again = input("\nDo you want to play again? (yes/no): ")
 
