@@ -1,13 +1,4 @@
-while True:
-    print("\nWelcome to Tech Quiz Game!")
-
-    name = input("Enter your name: ")
-
-    print(f"Hello, {name}! Let's start the quiz.")
-
-    score = 0
-
-    # Question 1
+def show_question1():
     print("\nQuestion 1")
     print("What does CPU stand for?")
     print("A. Central Processing Unit")
@@ -19,11 +10,13 @@ while True:
 
     if answer.upper() == "A":
         print("Correct!")
-        score += 1
+        return 1
     else:
         print("Wrong!")
+        return 0
 
-    # Question 2
+
+def show_question2():
     print("\nQuestion 2")
     print("Which language is mainly used for web page structure?")
     print("A. Python")
@@ -35,11 +28,13 @@ while True:
 
     if answer.upper() == "B":
         print("Correct!")
-        score += 1
+        return 1
     else:
         print("Wrong!")
+        return 0
 
-    # Question 3
+
+def show_question3():
     print("\nQuestion 3")
     print("What does RAM stand for?")
     print("A. Random Access Memory")
@@ -51,11 +46,13 @@ while True:
 
     if answer.upper() == "A":
         print("Correct!")
-        score += 1
+        return 1
     else:
         print("Wrong!")
+        return 0
 
-    # Question 4
+
+def show_question4():
     print("\nQuestion 4")
     print("Which one is a programming language?")
     print("A. Google")
@@ -67,11 +64,13 @@ while True:
 
     if answer.upper() == "C":
         print("Correct!")
-        score += 1
+        return 1
     else:
         print("Wrong!")
+        return 0
 
-    # Question 5
+
+def show_question5():
     print("\nQuestion 5")
     print("What does URL stand for?")
     print("A. Uniform Resource Locator")
@@ -83,9 +82,26 @@ while True:
 
     if answer.upper() == "A":
         print("Correct!")
-        score += 1
+        return 1
     else:
         print("Wrong!")
+        return 0
+
+
+while True:
+    print("\nWelcome to Tech Quiz Game!")
+
+    name = input("Enter your name: ")
+
+    print(f"Hello, {name}! Let's start the quiz.")
+
+    score = 0
+
+    score += show_question1()
+    score += show_question2()
+    score += show_question3()
+    score += show_question4()
+    score += show_question5()
 
     print("\nQuiz Completed!")
     print(f"Your score: {score}/5")
