@@ -8,7 +8,13 @@ def show_question(question, option_a, option_b, option_c, option_d, correct_answ
     print("C. " + option_c)
     print("D. " + option_d)
 
-    answer = input("Your answer: ")
+    while True:
+        answer = input("Your answer: ")
+
+        if answer.upper() in ["A", "B", "C", "D"]:
+            break
+
+        print("Please enter A, B, C, or D.")
 
     if answer.upper() == correct_answer:
         print("Correct!")
