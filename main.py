@@ -24,6 +24,48 @@ def show_question(question, option_a, option_b, option_c, option_d, correct_answ
         return 0
 
 
+def choose_difficulty():
+    while True:
+        print("\nChoose Difficulty Level:")
+        print("1. Easy")
+        print("2. Medium")
+        print("3. Hard")
+
+        choice = input("Enter your choice (1-3): ")
+
+        if choice == "1":
+            return "easy"
+        elif choice == "2":
+            return "medium"
+        elif choice == "3":
+            return "hard"
+        else:
+            print("Please enter 1, 2, or 3.")
+
+
+def show_result(name, difficulty, score, total_questions):
+    percentage = (score / total_questions) * 100
+
+    print("\n=================================")
+    print("          QUIZ RESULT")
+    print("=================================")
+    print(f"Player: {name}")
+    print(f"Difficulty: {difficulty.capitalize()}")
+    print(f"Score: {score}/{total_questions}")
+    print(f"Percentage: {percentage:.1f}%")
+
+    if percentage == 100:
+        print("Excellent! Perfect score!")
+    elif percentage >= 75:
+        print("Great job!")
+    elif percentage >= 50:
+        print("Good effort! Keep practicing!")
+    else:
+        print("Keep practicing and try again!")
+
+    print("=================================")
+
+
 questions = [
     {
         "question": "What does CPU stand for?",
@@ -33,7 +75,8 @@ questions = [
             "Central Program Utility",
             "Control Processing User"
         ],
-        "answer": "A"
+        "answer": "A",
+        "difficulty": "easy"
     },
     {
         "question": "Which language is mainly used for web page structure?",
@@ -43,7 +86,8 @@ questions = [
             "Java",
             "C++"
         ],
-        "answer": "B"
+        "answer": "B",
+        "difficulty": "easy"
     },
     {
         "question": "What does RAM stand for?",
@@ -53,7 +97,8 @@ questions = [
             "Run Active Memory",
             "Random Application Module"
         ],
-        "answer": "A"
+        "answer": "A",
+        "difficulty": "easy"
     },
     {
         "question": "Which one is a programming language?",
@@ -63,7 +108,8 @@ questions = [
             "Python",
             "Chrome"
         ],
-        "answer": "C"
+        "answer": "C",
+        "difficulty": "easy"
     },
     {
         "question": "What does URL stand for?",
@@ -73,23 +119,146 @@ questions = [
             "User Resource Location",
             "Uniform Random Link"
         ],
-        "answer": "A"
+        "answer": "A",
+        "difficulty": "easy"
+    },
+    {
+        "question": "Which data structure uses LIFO?",
+        "options": [
+            "Queue",
+            "Stack",
+            "Array",
+            "Linked List"
+        ],
+        "answer": "B",
+        "difficulty": "medium"
+    },
+    {
+        "question": "Which HTTP method is commonly used to retrieve data?",
+        "options": [
+            "POST",
+            "DELETE",
+            "GET",
+            "PUT"
+        ],
+        "answer": "C",
+        "difficulty": "medium"
+    },
+    {
+        "question": "What is the main purpose of an operating system?",
+        "options": [
+            "To manage computer hardware and software",
+            "To create websites",
+            "To design images",
+            "To browse the internet"
+        ],
+        "answer": "A",
+        "difficulty": "medium"
+    },
+    {
+        "question": "Which concept allows a class to inherit properties from another class?",
+        "options": [
+            "Encapsulation",
+            "Inheritance",
+            "Abstraction",
+            "Compilation"
+        ],
+        "answer": "B",
+        "difficulty": "medium"
+    },
+    {
+        "question": "Which SQL command is used to retrieve data from a database?",
+        "options": [
+            "INSERT",
+            "UPDATE",
+            "SELECT",
+            "DELETE"
+        ],
+        "answer": "C",
+        "difficulty": "medium"
+    },
+    {
+        "question": "Which algorithm has an average time complexity of O(n log n)?",
+        "options": [
+            "Linear Search",
+            "Bubble Sort",
+            "Merge Sort",
+            "Linear Traversal"
+        ],
+        "answer": "C",
+        "difficulty": "hard"
+    },
+    {
+        "question": "What does ACID stand for in database systems?",
+        "options": [
+            "Atomicity, Consistency, Isolation, Durability",
+            "Access, Control, Integration, Data",
+            "Automatic, Consistent, Internal, Database",
+            "Atomic Control, Information, Data"
+        ],
+        "answer": "A",
+        "difficulty": "hard"
+    },
+    {
+        "question": "Which protocol is mainly used for secure web communication?",
+        "options": [
+            "HTTP",
+            "FTP",
+            "HTTPS",
+            "SMTP"
+        ],
+        "answer": "C",
+        "difficulty": "hard"
+    },
+    {
+        "question": "Which principle hides internal implementation details from the user?",
+        "options": [
+            "Inheritance",
+            "Polymorphism",
+            "Abstraction",
+            "Compilation"
+        ],
+        "answer": "C",
+        "difficulty": "hard"
+    },
+    {
+        "question": "Which data structure is commonly used to implement a priority queue?",
+        "options": [
+            "Heap",
+            "Stack",
+            "String",
+            "Graph"
+        ],
+        "answer": "A",
+        "difficulty": "hard"
     }
 ]
 
 
 while True:
-    print("\nWelcome to Tech Quiz Game!")
+    print("\n=================================")
+    print("       WELCOME TO TECH QUIZ")
+    print("=================================")
 
     name = input("Enter your name: ")
 
-    print(f"Hello, {name}! Let's start the quiz.")
+    print(f"\nHello, {name}! Let's start the quiz.")
+
+    difficulty = choose_difficulty()
+
+    selected_questions = [
+        question for question in questions
+        if question["difficulty"] == difficulty
+    ]
+
+    random.shuffle(selected_questions)
+
+    print(f"\nYou selected: {difficulty.capitalize()}")
+    print(f"There are {len(selected_questions)} questions.")
 
     score = 0
 
-    random.shuffle(questions)
-
-    for question_data in questions:
+    for question_data in selected_questions:
         score += show_question(
             question_data["question"],
             question_data["options"][0],
@@ -99,14 +268,18 @@ while True:
             question_data["answer"]
         )
 
-    print("\nQuiz Completed!")
-    print(f"Your score: {score}/{len(questions)}")
+    show_result(
+        name,
+        difficulty,
+        score,
+        len(selected_questions)
+    )
 
     play_again = input("\nDo you want to play again? (yes/no): ")
 
     if play_again.lower() == "yes":
-        print("Starting the quiz again...")
+        print("\nStarting the quiz again...")
         continue
     else:
-        print("Thanks for playing!")
+        print("\nThanks for playing!")
         break
