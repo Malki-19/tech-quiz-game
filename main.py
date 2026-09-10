@@ -235,51 +235,56 @@ questions = [
 ]
 
 
-while True:
-    print("\n=================================")
-    print("       WELCOME TO TECH QUIZ")
-    print("=================================")
+def main():
+    while True:
+        print("\n=================================")
+        print("       WELCOME TO TECH QUIZ")
+        print("=================================")
 
-    name = input("Enter your name: ")
+        name = input("Enter your name: ")
 
-    print(f"\nHello, {name}! Let's start the quiz.")
+        print(f"\nHello, {name}! Let's start the quiz.")
 
-    difficulty = choose_difficulty()
+        difficulty = choose_difficulty()
 
-    selected_questions = [
-        question for question in questions
-        if question["difficulty"] == difficulty
-    ]
+        selected_questions = [
+            question for question in questions
+            if question["difficulty"] == difficulty
+        ]
 
-    random.shuffle(selected_questions)
+        random.shuffle(selected_questions)
 
-    print(f"\nYou selected: {difficulty.capitalize()}")
-    print(f"There are {len(selected_questions)} questions.")
+        print(f"\nYou selected: {difficulty.capitalize()}")
+        print(f"There are {len(selected_questions)} questions.")
 
-    score = 0
+        score = 0
 
-    for question_data in selected_questions:
-        score += show_question(
-            question_data["question"],
-            question_data["options"][0],
-            question_data["options"][1],
-            question_data["options"][2],
-            question_data["options"][3],
-            question_data["answer"]
+        for question_data in selected_questions:
+            score += show_question(
+                question_data["question"],
+                question_data["options"][0],
+                question_data["options"][1],
+                question_data["options"][2],
+                question_data["options"][3],
+                question_data["answer"]
+            )
+
+        show_result(
+            name,
+            difficulty,
+            score,
+            len(selected_questions)
         )
 
-    show_result(
-        name,
-        difficulty,
-        score,
-        len(selected_questions)
-    )
+        play_again = input("\nDo you want to play again? (yes/no): ")
 
-    play_again = input("\nDo you want to play again? (yes/no): ")
+        if play_again.lower() == "yes":
+            print("\nStarting the quiz again...")
+            continue
+        else:
+            print("\nThanks for playing!")
+            break
 
-    if play_again.lower() == "yes":
-        print("\nStarting the quiz again...")
-        continue
-    else:
-        print("\nThanks for playing!")
-        break
+
+if __name__ == "__main__":
+    main()
